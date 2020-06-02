@@ -21,4 +21,3 @@ export const goToPage = (name) => {
     payload: name,
   };
 };
-

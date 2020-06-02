@@ -27,6 +27,8 @@ const Main = () => {
     switch (page) {
       case 'Home':
         return <HomeTabView />;
+      case 'LessonList':
+
       default:
         return <View style={styles.mainContainer} />;
     }

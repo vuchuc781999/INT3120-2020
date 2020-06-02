@@ -13,7 +13,7 @@ const PlatformTouchable = (props) => {
     children,
     activeOpacity,
     rippleColor,
-    rippleOverflow,
+    rippleOverflow = false,
     ...rest
   } = props;
 

@@ -1,0 +1,59 @@
+{
+  "version": "0.0.0",
+  "data": [
+    {
+      "iconName": "search",
+      "title": "Overview",
+      "headStack": true,
+      "lessonsTotal": 6
+    },
+    {
+      "iconName": "book-open",
+      "title": "Basic Concepts",
+      "headStack": true,
+      "lessonsTotal": 8
+    },
+    {
+      "iconName": "refresh-cw",
+      "title": "Conditionals and Loop",
+      "headStack": true,
+      "lessonsTotal": 8
+    },
+    {
+      "iconName": "settings",
+      "title": "Functions",
+      "headStack": false,
+      "lessonsTotal": 5
+    },
+    {
+      "iconName": "box",
+      "title": "Objects",
+      "headStack": true,
+      "lessonsTotal": 4
+    },
+    {
+      "iconName": "cpu",
+      "title": "Core Objects",
+      "headStack": false,
+      "lessonsTotal": 6
+    },
+    {
+      "iconName": "server",
+      "title": "DOM & Events",
+      "headStack": true,
+      "lessonsTotal": 9
+    },
+    {
+      "iconName": "hash",
+      "title": "ECMAScript 6",
+      "headStack": true,
+      "lessonsTotal": 9
+    },
+    {
+      "iconName": "check-square",
+      "title": "Certificate",
+      "headStack": true,
+      "lessonsTotal": 0
+    }
+  ]
+}

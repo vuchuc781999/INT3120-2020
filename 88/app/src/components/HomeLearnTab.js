@@ -3,72 +3,26 @@ import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import PlatformTouchable from '../utils/touchable';
-const currentLesson = 'Conditionals and Loop';
-const currentLe = 4;
-const learnList = [
-  {
-    iconName: 'search',
-    title: 'Overview',
-    headStack: true,
-    lessonsTotal: 6,
-  },
-  {
-    iconName: 'book-open',
-    title: 'Basic Concepts',
-    headStack: true,
-    lessonsTotal: 8,
-  },
-  {
-    iconName: 'refresh-cw',
-    title: 'Conditionals and Loop',
-    headStack: true,
-    lessonsTotal: 8,
-  },
-  {
-    iconName: 'settings',
-    title: 'Functions',
-    headStack: false,
-    lessonsTotal: 5,
-  },
-  {
-    iconName: 'box',
-    title: 'Objects',
-    headStack: true,
-    lessonsTotal: 4,
-  },
-  {
-    iconName: 'cpu',
-    title: 'Core Objects',
-    headStack: false,
-    lessonsTotal: 6,
-  },
-  {
-    iconName: 'server',
-    title: 'DOM & Events',
-    headStack: true,
-    lessonsTotal: 9,
-  },
-  {
-    iconName: 'hash',
-    title: 'ECMAScript 6',
-    headStack: true,
-    lessonsTotal: 9,
-  },
-  {
-    iconName: 'check-square',
-    title: 'Certificate',
-    headStack: true,
-    lessonsTotal: 0,
-  },
-];
+
+import courseList from '../assets/data/courseList.json';
+import {useSelector, shallowEqual, useDispatch} from 'react-redux';
+import {changeNavIcon} from '../actions/ui';
 
 const LearnItem = (props) => {
   const {iconName, title, progressUp, progressDown, status} = props;
+
+  const dispatch = useDispatch();
+
+  const itemPress = () => {
+    dispatch(changeNavIcon(true));
+  };
+
   return (
     <PlatformTouchable
       style={[styles.itemContainer]}
       rippleColor="rgba(0, 0, 0, .03)"
-      rippleOverflow>
+      rippleOverflow
+      onPress={itemPress}>
       <View
         style={[
           styles.iconContainer,
@@ -115,11 +69,13 @@ const LearnItem = (props) => {
 };
 
 const LearnTab = () => {
+  const currentStatus = useSelector((state) => state.home, shallowEqual);
+
   const tempNode = [];
   let k = 0,
     space = false,
     learn = false;
-  const renderedList = learnList.reduce((newArray, current, index) => {
+  const renderedList = courseList.data.reduce((newArray, current, index) => {
     const {iconName, title, lessonsTotal} = current;
     if (tempNode && current.headStack) {
       newArray.push(
@@ -136,7 +92,7 @@ const LearnTab = () => {
       tempNode.length = 0;
     }
     let status = '';
-    if (title === currentLesson) {
+    if (currentStatus.course === index) {
       status = 'learning';
       learn = true;
     } else if (!learn) {
@@ -145,9 +101,10 @@ const LearnTab = () => {
     tempNode.push(
       <LearnItem
         key={k++}
+        courseIndex={index}
         iconName={iconName}
         title={title}
-        progressUp={status === 'learning' ? currentLe : 0}
+        progressUp={status === 'learning' ? currentStatus.lesson : 0}
         progressDown={lessonsTotal}
         status={status}
       />,

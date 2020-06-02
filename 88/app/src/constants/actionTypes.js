@@ -22,3 +22,14 @@ export const GO_TO_PAGE = 'GO_TO_PAGE';
  * @constant {ActionType} CHANGE_HOME_TAB - change home tab view to learn or play
  */
 export const CHANGE_HOME_TAB = 'CHANGE_HOME_TAB';
+
+/**
+ * @constant {ActionType} CHANGE_LESSON - change lesson at home learn tab (include learned lesson)
+ */
+export const CHANGE_LESSON = 'CHANGE_LESSON';
+
+/**
+ * @constant {ActionType} CHANGE_CURRENT_LESSON - change lesson at home learn tab (latest lesson) */
+export const CHANGE_CURRENT_LESSON = 'CHANGE_CURRENT_LESSON';
+
+export const CHANGE_HOME_SCREEN = 'CHANGE_HOME_SCREEN';

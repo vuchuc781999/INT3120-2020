@@ -1,4 +1,4 @@
-package com.app;
+package com.app.learnjavascript;
 
 import com.facebook.react.ReactActivity;
 

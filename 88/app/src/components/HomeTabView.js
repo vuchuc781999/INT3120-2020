@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, Dimensions, ScrollView, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, Dimensions, Text} from 'react-native';
 import {TabView, TabBar, SceneMap} from 'react-native-tab-view';
 import {useSelector, useDispatch} from 'react-redux';
 
 import LearnTab from './HomeLearnTab';
 import {changeTab} from '../actions/home';
+import PlatformTouchable from '../utils/touchable';
+import LessonList from './HomeLessionList';
 
 const renderTabBar = (props) => {
   return (
@@ -17,7 +19,27 @@ const renderTabBar = (props) => {
 };
 
 const PlayTab = () => {
-  return <View style={[styles.scene, {backgroundColor: 'red'}]}></View>;
+  return (
+    <View
+      style={[styles.scene, {justifyContent: 'center', alignItems: 'center'}]}>
+      <Text style={{color: '#757575', fontSize: 20, marginVertical: 5}}>
+        Play Section Moved
+      </Text>
+      <Text style={{color: '#757575', fontSize: 12}}>
+        Challenge peers, gain XP, and get better in our free all-in-one app!
+      </Text>
+      <PlatformTouchable
+        rippleColor="rgba(0, 0, 0, .03)"
+        style={{
+          backgroundColor: '#8bc34a',
+          width: 250,
+          alignItems: 'center',
+          marginVertical: 10,
+        }}>
+        <Text style={{marginVertical: 10, color: '#fff'}}>INSTALL APP</Text>
+      </PlatformTouchable>
+    </View>
+  );
 };
 
 const initialLayout = {
@@ -32,6 +54,7 @@ const HomeTabView = () => {
   ]);
 
   const index = useSelector((state) => state.home.tab);
+  const screen = useSelector((state) => state.home.screen);
 
   const dispatch = useDispatch();
   const setIndex = (i) => {
@@ -39,7 +62,7 @@ const HomeTabView = () => {
   };
 
   const renderScene = SceneMap({
-    learn: LearnTab,
+    learn: screen === 'courses list' ? LearnTab : LessonList,
     play: PlayTab,
   });
 
